@@ -266,7 +266,6 @@ namespace TLSharp.Tests
                 {
                     AccessHash = document.AccessHash,
                     Id = document.Id,
-                    Version = document.Version
                 },
                 document.Size);
             
@@ -286,12 +285,11 @@ namespace TLSharp.Tests
                 .FirstOrDefault(x => x.Id == 5880094);
     
             var photo = ((TLUserProfilePhoto)user.Photo);
-            var photoLocation = (TLFileLocation) photo.PhotoBig;
+            var photoLocation = photo.PhotoBig;
 
             var resFile = await client.GetFile(new TLInputFileLocation()
             {
                 LocalId = photoLocation.LocalId,
-                Secret = photoLocation.Secret,
                 VolumeId = photoLocation.VolumeId
             }, 1024);
 
@@ -308,7 +306,7 @@ namespace TLSharp.Tests
             var hash = await client.SendCodeRequestAsync(NotRegisteredNumberToSignUp);
             var code = "";
 
-            var registeredUser = await client.SignUpAsync(NotRegisteredNumberToSignUp, hash, code, "TLSharp", "User");
+            var registeredUser = await client.SignUpAsync(NotRegisteredNumberToSignUp, hash, code, "TLSharp");
             Assert.IsNotNull(registeredUser);
             Assert.IsTrue(client.IsUserAuthorized());
 

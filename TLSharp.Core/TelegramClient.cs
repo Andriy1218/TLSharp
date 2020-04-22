@@ -185,14 +185,7 @@ namespace TLSharp.Core
 
         public async Task<bool> IsPhoneRegisteredAsync(string phoneNumber, CancellationToken token = default(CancellationToken))
         {
-            if (String.IsNullOrWhiteSpace(phoneNumber))
-                throw new ArgumentNullException(nameof(phoneNumber));
-
-            var authCheckPhoneRequest = new TLRequestCheckPhone() { PhoneNumber = phoneNumber };
-
-            await RequestWithDcMigration(authCheckPhoneRequest, token).ConfigureAwait(false);
-
-            return authCheckPhoneRequest.Response.PhoneRegistered;
+            throw new NotImplementedException();
         }
 
         public async Task<string> SendCodeRequestAsync(string phoneNumber, CancellationToken token = default(CancellationToken))
@@ -221,10 +214,14 @@ namespace TLSharp.Core
             var request = new TLRequestSignIn() { PhoneNumber = phoneNumber, PhoneCodeHash = phoneCodeHash, PhoneCode = code };
 
             await RequestWithDcMigration(request, token).ConfigureAwait(false);
+            if (!(request.Response is TLAuthorization authorization))
+                throw new InvalidOperationException("User is not registered");
 
-            OnUserAuthenticated(((TLUser)request.Response.User));
+            var user = (TLUser) authorization.User;
 
-            return ((TLUser)request.Response.User);
+            OnUserAuthenticated(user);
+
+            return user;
         }
         
         public async Task<TLPassword> GetPasswordSetting(CancellationToken token = default(CancellationToken))
@@ -238,32 +235,22 @@ namespace TLSharp.Core
 
         public async Task<TLUser> MakeAuthWithPasswordAsync(TLPassword password, string password_str, CancellationToken token = default(CancellationToken))
         {
-            token.ThrowIfCancellationRequested();
-
-            byte[] password_Bytes = Encoding.UTF8.GetBytes(password_str);
-            IEnumerable<byte> rv = password.CurrentSalt.Concat(password_Bytes).Concat(password.CurrentSalt);
-
-            SHA256Managed hashstring = new SHA256Managed();
-            var password_hash = hashstring.ComputeHash(rv.ToArray());
-
-            var request = new TLRequestCheckPassword() { PasswordHash = password_hash };
-
-            await RequestWithDcMigration(request, token).ConfigureAwait(false);
-
-            OnUserAuthenticated((TLUser)request.Response.User);
-
-            return (TLUser)request.Response.User;
+            throw new NotImplementedException();
         }
 
-        public async Task<TLUser> SignUpAsync(string phoneNumber, string phoneCodeHash, string code, string firstName, string lastName, CancellationToken token = default(CancellationToken))
+        public async Task<TLUser> SignUpAsync(string phoneNumber, string phoneCodeHash, string firstName, string lastName, CancellationToken token = default(CancellationToken))
         {
-            var request = new TLRequestSignUp() { PhoneNumber = phoneNumber, PhoneCode = code, PhoneCodeHash = phoneCodeHash, FirstName = firstName, LastName = lastName };
+            var request = new TLRequestSignUp() { PhoneNumber = phoneNumber, PhoneCodeHash = phoneCodeHash, FirstName = firstName, LastName = lastName };
             
             await RequestWithDcMigration(request, token).ConfigureAwait(false);
 
-            OnUserAuthenticated((TLUser)request.Response.User);
+            if (!(request.Response is TLAuthorization authorization))
+                throw new InvalidOperationException("User is not registered");
 
-            return (TLUser)request.Response.User;
+            var user = (TLUser) authorization.User;
+            OnUserAuthenticated(user);
+
+            return user;
         }
 
         public async Task<T> SendRequestAsync<T>(TLMethod methodToExecute, CancellationToken token = default(CancellationToken))
@@ -316,17 +303,17 @@ namespace TLSharp.Core
                 .ConfigureAwait(false);
         }
 
-        public async Task<TLLink> DeleteContactAsync(TLAbsInputUser user, CancellationToken token = default(CancellationToken))
+        public async Task<TLAbsUpdates> DeleteContactAsync(TLAbsInputUser user, CancellationToken token = default(CancellationToken))
         {
-            var req = new TLRequestDeleteContact {Id = user};
+            var req = new TLRequestDeleteContacts {Id = new TLVector<TLAbsInputUser> {user}};
 
-            return await SendAuthenticatedRequestAsync<TLLink>(req, token)
+            return await SendAuthenticatedRequestAsync<TLAbsUpdates>(req, token)
                 .ConfigureAwait(false);
         }
 
         public async Task<TLContacts> GetContactsAsync(CancellationToken token = default(CancellationToken))
         {
-            var req = new TLRequestGetContacts() { Hash = "" };
+            var req = new TLRequestGetContacts() { Hash = 0 };
 
             return await SendAuthenticatedRequestAsync<TLContacts>(req, token)
                 .ConfigureAwait(false);
@@ -378,7 +365,8 @@ namespace TLSharp.Core
                     RandomId = Helpers.GenerateRandomLong(),
                     Background = false,
                     ClearDraft = false,
-                    Media = new TLInputMediaUploadedPhoto() { File = file, Caption = caption },
+                    Media = new TLInputMediaUploadedPhoto() { File = file },
+                    Message = caption,
                     Peer = peer
                 }, token)
                 .ConfigureAwait(false);
@@ -395,10 +383,10 @@ namespace TLSharp.Core
                     Media = new TLInputMediaUploadedDocument()
                     {
                         File = file,
-                        Caption = caption,
                         MimeType = mimeType,
                         Attributes = attributes
                     },
+                    Message = caption,
                     Peer = peer
                 }, token)
                 .ConfigureAwait(false);
