@@ -22,7 +22,7 @@ using TLAuthorization = TeleSharp.TL.Auth.TLAuthorization;
 
 namespace TLSharp.Core
 {
-    public class TelegramClient : IDisposable
+    public class TelegramClient : ITelegramClient
     {
         private MtProtoSender sender;
         private TcpTransport transport;
