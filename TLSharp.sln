@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleSharp.Generator", "Tele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLSharp.Tests.VS", "TLSharp.Tests.VS\TLSharp.Tests.VS.csproj", "{AFFC3B00-3E4D-4327-8F7A-08EE41E0C8B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLSharp.Tests.NUnit", "TLSharp.Tests.NUnit\TLSharp.Tests.NUnit.csproj", "{E90B705B-19FA-43BA-B952-69957976D12C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleSharp.TL", "TeleSharp.TL\TeleSharp.TL.csproj", "{D64CE2CF-6C1A-4EFD-A7D3-D7A342104ADC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLSharp.Core", "TLSharp.Core\TLSharp.Core.csproj", "{08236F75-8CCF-44CC-B022-60380622BBA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLSharp.Tests", "TLSharp.Tests\TLSharp.Tests.csproj", "{438EA9A2-CC7B-4EFA-BD7D-83BBF717246E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLSharp.Tests.NUnit", "TLSharp.Tests.NUnit\TLSharp.Tests.NUnit.csproj", "{C7B60A37-E17E-4037-9448-9F6DEEA66BA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{AFFC3B00-3E4D-4327-8F7A-08EE41E0C8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFFC3B00-3E4D-4327-8F7A-08EE41E0C8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFFC3B00-3E4D-4327-8F7A-08EE41E0C8B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E90B705B-19FA-43BA-B952-69957976D12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E90B705B-19FA-43BA-B952-69957976D12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E90B705B-19FA-43BA-B952-69957976D12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E90B705B-19FA-43BA-B952-69957976D12C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D64CE2CF-6C1A-4EFD-A7D3-D7A342104ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D64CE2CF-6C1A-4EFD-A7D3-D7A342104ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D64CE2CF-6C1A-4EFD-A7D3-D7A342104ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{438EA9A2-CC7B-4EFA-BD7D-83BBF717246E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{438EA9A2-CC7B-4EFA-BD7D-83BBF717246E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{438EA9A2-CC7B-4EFA-BD7D-83BBF717246E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B60A37-E17E-4037-9448-9F6DEEA66BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B60A37-E17E-4037-9448-9F6DEEA66BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B60A37-E17E-4037-9448-9F6DEEA66BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B60A37-E17E-4037-9448-9F6DEEA66BA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
