@@ -7,48 +7,51 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Channels
 {
-    [TLObject(-344583728)]
+	[TLObject(-751007486)]
     public class TLRequestEditAdmin : TLMethod
     {
         public override int Constructor
         {
             get
             {
-                return -344583728;
+                return -751007486;
             }
         }
 
-        public TLAbsInputChannel Channel { get; set; }
-        public TLAbsInputUser UserId { get; set; }
-        public TLAbsChannelParticipantRole Role { get; set; }
-        public TLAbsUpdates Response { get; set; }
+                public TLAbsInputChannel Channel {get;set;}
+        public TLAbsInputUser UserId {get;set;}
+        public TLChatAdminRights AdminRights {get;set;}
+        public string Rank {get;set;}
+        public TLAbsUpdates Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Channel = (TLAbsInputChannel)ObjectUtils.DeserializeObject(br);
-            UserId = (TLAbsInputUser)ObjectUtils.DeserializeObject(br);
-            Role = (TLAbsChannelParticipantRole)ObjectUtils.DeserializeObject(br);
+UserId = (TLAbsInputUser)ObjectUtils.DeserializeObject(br);
+AdminRights = (TLChatAdminRights)ObjectUtils.DeserializeObject(br);
+Rank = StringUtil.Deserialize(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Channel, bw);
-            ObjectUtils.SerializeObject(UserId, bw);
-            ObjectUtils.SerializeObject(Role, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Channel,bw);
+ObjectUtils.SerializeObject(UserId,bw);
+ObjectUtils.SerializeObject(AdminRights,bw);
+StringUtil.Serialize(Rank,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = (TLAbsUpdates)ObjectUtils.DeserializeObject(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = (TLAbsUpdates)ObjectUtils.DeserializeObject(br);
 
-        }
+		}
     }
 }

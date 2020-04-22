@@ -7,38 +7,38 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Messages
 {
-    [TLObject(-1970352846)]
+	[TLObject(-463889475)]
     public class TLStickers : TLAbsStickers
     {
         public override int Constructor
         {
             get
             {
-                return -1970352846;
+                return -463889475;
             }
         }
 
-        public string Hash { get; set; }
-        public TLVector<TLAbsDocument> Stickers { get; set; }
+             public int Hash {get;set;}
+     public TLVector<TLAbsDocument> Stickers {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
-            Hash = StringUtil.Deserialize(br);
-            Stickers = (TLVector<TLAbsDocument>)ObjectUtils.DeserializeVector<TLAbsDocument>(br);
+            Hash = br.ReadInt32();
+Stickers = (TLVector<TLAbsDocument>)ObjectUtils.DeserializeVector<TLAbsDocument>(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            StringUtil.Serialize(Hash, bw);
-            ObjectUtils.SerializeObject(Stickers, bw);
+			bw.Write(Constructor);
+            bw.Write(Hash);
+ObjectUtils.SerializeObject(Stickers,bw);
 
         }
     }

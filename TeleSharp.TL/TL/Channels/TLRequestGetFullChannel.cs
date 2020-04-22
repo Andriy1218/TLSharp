@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Channels
 {
-    [TLObject(141781513)]
+	[TLObject(141781513)]
     public class TLRequestGetFullChannel : TLMethod
     {
         public override int Constructor
@@ -18,14 +18,14 @@ namespace TeleSharp.TL.Channels
             }
         }
 
-        public TLAbsInputChannel Channel { get; set; }
-        public Messages.TLChatFull Response { get; set; }
+                public TLAbsInputChannel Channel {get;set;}
+        public Messages.TLChatFull Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
@@ -35,14 +35,14 @@ namespace TeleSharp.TL.Channels
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Channel, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Channel,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = (Messages.TLChatFull)ObjectUtils.DeserializeObject(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = (Messages.TLChatFull)ObjectUtils.DeserializeObject(br);
 
-        }
+		}
     }
 }

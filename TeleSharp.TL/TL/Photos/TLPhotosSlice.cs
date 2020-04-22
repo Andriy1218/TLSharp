@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Photos
 {
-    [TLObject(352657236)]
+	[TLObject(352657236)]
     public class TLPhotosSlice : TLAbsPhotos
     {
         public override int Constructor
@@ -18,30 +18,30 @@ namespace TeleSharp.TL.Photos
             }
         }
 
-        public int Count { get; set; }
-        public TLVector<TLAbsPhoto> Photos { get; set; }
-        public TLVector<TLAbsUser> Users { get; set; }
+             public int Count {get;set;}
+     public TLVector<TLAbsPhoto> Photos {get;set;}
+     public TLVector<TLAbsUser> Users {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Count = br.ReadInt32();
-            Photos = (TLVector<TLAbsPhoto>)ObjectUtils.DeserializeVector<TLAbsPhoto>(br);
-            Users = (TLVector<TLAbsUser>)ObjectUtils.DeserializeVector<TLAbsUser>(br);
+Photos = (TLVector<TLAbsPhoto>)ObjectUtils.DeserializeVector<TLAbsPhoto>(br);
+Users = (TLVector<TLAbsUser>)ObjectUtils.DeserializeVector<TLAbsUser>(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(Count);
-            ObjectUtils.SerializeObject(Photos, bw);
-            ObjectUtils.SerializeObject(Users, bw);
+ObjectUtils.SerializeObject(Photos,bw);
+ObjectUtils.SerializeObject(Users,bw);
 
         }
     }

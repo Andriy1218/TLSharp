@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-805141448)]
+	[TLObject(-805141448)]
     public class TLImportedContact : TLObject
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public int UserId { get; set; }
-        public long ClientId { get; set; }
+             public int UserId {get;set;}
+     public long ClientId {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             UserId = br.ReadInt32();
-            ClientId = br.ReadInt64();
+ClientId = br.ReadInt64();
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(UserId);
-            bw.Write(ClientId);
+bw.Write(ClientId);
 
         }
     }

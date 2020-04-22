@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Channels
 {
-    [TLObject(527021574)]
+	[TLObject(527021574)]
     public class TLRequestToggleSignatures : TLMethod
     {
         public override int Constructor
@@ -18,34 +18,34 @@ namespace TeleSharp.TL.Channels
             }
         }
 
-        public TLAbsInputChannel Channel { get; set; }
-        public bool Enabled { get; set; }
-        public TLAbsUpdates Response { get; set; }
+                public TLAbsInputChannel Channel {get;set;}
+        public bool Enabled {get;set;}
+        public TLAbsUpdates Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Channel = (TLAbsInputChannel)ObjectUtils.DeserializeObject(br);
-            Enabled = BoolUtil.Deserialize(br);
+Enabled = BoolUtil.Deserialize(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Channel, bw);
-            BoolUtil.Serialize(Enabled, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Channel,bw);
+BoolUtil.Serialize(Enabled,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = (TLAbsUpdates)ObjectUtils.DeserializeObject(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = (TLAbsUpdates)ObjectUtils.DeserializeObject(br);
 
-        }
+		}
     }
 }

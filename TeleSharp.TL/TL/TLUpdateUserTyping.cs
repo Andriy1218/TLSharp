@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(1548249383)]
+	[TLObject(1548249383)]
     public class TLUpdateUserTyping : TLAbsUpdate
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public int UserId { get; set; }
-        public TLAbsSendMessageAction Action { get; set; }
+             public int UserId {get;set;}
+     public TLAbsSendMessageAction Action {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             UserId = br.ReadInt32();
-            Action = (TLAbsSendMessageAction)ObjectUtils.DeserializeObject(br);
+Action = (TLAbsSendMessageAction)ObjectUtils.DeserializeObject(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(UserId);
-            ObjectUtils.SerializeObject(Action, bw);
+ObjectUtils.SerializeObject(Action,bw);
 
         }
     }

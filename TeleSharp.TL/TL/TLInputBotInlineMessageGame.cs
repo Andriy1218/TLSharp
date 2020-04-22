@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(1262639204)]
+	[TLObject(1262639204)]
     public class TLInputBotInlineMessageGame : TLAbsInputBotInlineMessage
     {
         public override int Constructor
@@ -18,35 +18,32 @@ namespace TeleSharp.TL
             }
         }
 
-        public int Flags { get; set; }
-        public TLAbsReplyMarkup ReplyMarkup { get; set; }
+             public int Flags {get;set;}
+     public TLAbsReplyMarkup ReplyMarkup {get;set;}
 
 
-        public void ComputeFlags()
-        {
-            Flags = 0;
-            Flags = ReplyMarkup != null ? (Flags | 4) : (Flags & ~4);
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Flags = br.ReadInt32();
-            if ((Flags & 4) != 0)
-                ReplyMarkup = (TLAbsReplyMarkup)ObjectUtils.DeserializeObject(br);
-            else
-                ReplyMarkup = null;
+if ((Flags & 4) != 0)
+ReplyMarkup = (TLAbsReplyMarkup)ObjectUtils.DeserializeObject(br);
+else
+ReplyMarkup = null;
 
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ComputeFlags();
+			bw.Write(Constructor);
             bw.Write(Flags);
-            if ((Flags & 4) != 0)
-                ObjectUtils.SerializeObject(ReplyMarkup, bw);
+if ((Flags & 4) != 0)
+ObjectUtils.SerializeObject(ReplyMarkup,bw);
 
         }
     }

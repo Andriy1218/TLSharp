@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(314359194)]
+	[TLObject(314359194)]
     public class TLUpdateNewEncryptedMessage : TLAbsUpdate
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public TLAbsEncryptedMessage Message { get; set; }
-        public int Qts { get; set; }
+             public TLAbsEncryptedMessage Message {get;set;}
+     public int Qts {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Message = (TLAbsEncryptedMessage)ObjectUtils.DeserializeObject(br);
-            Qts = br.ReadInt32();
+Qts = br.ReadInt32();
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Message, bw);
-            bw.Write(Qts);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Message,bw);
+bw.Write(Qts);
 
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-1066346178)]
+	[TLObject(-1066346178)]
     public class TLPageBlockPreformatted : TLAbsPageBlock
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public TLAbsRichText Text { get; set; }
-        public string Language { get; set; }
+             public TLAbsRichText Text {get;set;}
+     public string Language {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Text = (TLAbsRichText)ObjectUtils.DeserializeObject(br);
-            Language = StringUtil.Deserialize(br);
+Language = StringUtil.Deserialize(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Text, bw);
-            StringUtil.Serialize(Language, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Text,bw);
+StringUtil.Serialize(Language,bw);
 
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-75283823)]
+	[TLObject(-75283823)]
     public class TLTopPeerCategoryPeers : TLObject
     {
         public override int Constructor
@@ -18,30 +18,30 @@ namespace TeleSharp.TL
             }
         }
 
-        public TLAbsTopPeerCategory Category { get; set; }
-        public int Count { get; set; }
-        public TLVector<TLTopPeer> Peers { get; set; }
+             public TLAbsTopPeerCategory Category {get;set;}
+     public int Count {get;set;}
+     public TLVector<TLTopPeer> Peers {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Category = (TLAbsTopPeerCategory)ObjectUtils.DeserializeObject(br);
-            Count = br.ReadInt32();
-            Peers = (TLVector<TLTopPeer>)ObjectUtils.DeserializeVector<TLTopPeer>(br);
+Count = br.ReadInt32();
+Peers = (TLVector<TLTopPeer>)ObjectUtils.DeserializeVector<TLTopPeer>(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Category, bw);
-            bw.Write(Count);
-            ObjectUtils.SerializeObject(Peers, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Category,bw);
+bw.Write(Count);
+ObjectUtils.SerializeObject(Peers,bw);
 
         }
     }

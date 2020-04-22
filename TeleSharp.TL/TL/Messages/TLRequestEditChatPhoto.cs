@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Messages
 {
-    [TLObject(-900957736)]
+	[TLObject(-900957736)]
     public class TLRequestEditChatPhoto : TLMethod
     {
         public override int Constructor
@@ -18,34 +18,34 @@ namespace TeleSharp.TL.Messages
             }
         }
 
-        public int ChatId { get; set; }
-        public TLAbsInputChatPhoto Photo { get; set; }
-        public TLAbsUpdates Response { get; set; }
+                public int ChatId {get;set;}
+        public TLAbsInputChatPhoto Photo {get;set;}
+        public TLAbsUpdates Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             ChatId = br.ReadInt32();
-            Photo = (TLAbsInputChatPhoto)ObjectUtils.DeserializeObject(br);
+Photo = (TLAbsInputChatPhoto)ObjectUtils.DeserializeObject(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(ChatId);
-            ObjectUtils.SerializeObject(Photo, bw);
+ObjectUtils.SerializeObject(Photo,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = (TLAbsUpdates)ObjectUtils.DeserializeObject(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = (TLAbsUpdates)ObjectUtils.DeserializeObject(br);
 
-        }
+		}
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Account
 {
-    [TLObject(1040964988)]
+	[TLObject(1040964988)]
     public class TLRequestUpdateUsername : TLMethod
     {
         public override int Constructor
@@ -18,14 +18,14 @@ namespace TeleSharp.TL.Account
             }
         }
 
-        public string Username { get; set; }
-        public TLAbsUser Response { get; set; }
+                public string Username {get;set;}
+        public TLAbsUser Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
@@ -35,14 +35,14 @@ namespace TeleSharp.TL.Account
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            StringUtil.Serialize(Username, bw);
+			bw.Write(Constructor);
+            StringUtil.Serialize(Username,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = (TLAbsUser)ObjectUtils.DeserializeObject(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = (TLAbsUser)ObjectUtils.DeserializeObject(br);
 
-        }
+		}
     }
 }

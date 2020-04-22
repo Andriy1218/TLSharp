@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-116274796)]
+	[TLObject(-116274796)]
     public class TLContact : TLObject
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public int UserId { get; set; }
-        public bool Mutual { get; set; }
+             public int UserId {get;set;}
+     public bool Mutual {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             UserId = br.ReadInt32();
-            Mutual = BoolUtil.Deserialize(br);
+Mutual = BoolUtil.Deserialize(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(UserId);
-            BoolUtil.Serialize(Mutual, bw);
+BoolUtil.Serialize(Mutual,bw);
 
         }
     }

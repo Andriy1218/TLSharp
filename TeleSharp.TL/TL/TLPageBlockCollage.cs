@@ -7,38 +7,38 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(145955919)]
+	[TLObject(1705048653)]
     public class TLPageBlockCollage : TLAbsPageBlock
     {
         public override int Constructor
         {
             get
             {
-                return 145955919;
+                return 1705048653;
             }
         }
 
-        public TLVector<TLAbsPageBlock> Items { get; set; }
-        public TLAbsRichText Caption { get; set; }
+             public TLVector<TLAbsPageBlock> Items {get;set;}
+     public TLPageCaption Caption {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Items = (TLVector<TLAbsPageBlock>)ObjectUtils.DeserializeVector<TLAbsPageBlock>(br);
-            Caption = (TLAbsRichText)ObjectUtils.DeserializeObject(br);
+Caption = (TLPageCaption)ObjectUtils.DeserializeObject(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Items, bw);
-            ObjectUtils.SerializeObject(Caption, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Items,bw);
+ObjectUtils.SerializeObject(Caption,bw);
 
         }
     }

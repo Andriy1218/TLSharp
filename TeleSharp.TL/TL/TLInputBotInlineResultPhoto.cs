@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-1462213465)]
+	[TLObject(-1462213465)]
     public class TLInputBotInlineResultPhoto : TLAbsInputBotInlineResult
     {
         public override int Constructor
@@ -18,33 +18,33 @@ namespace TeleSharp.TL
             }
         }
 
-        public string Id { get; set; }
-        public string Type { get; set; }
-        public TLAbsInputPhoto Photo { get; set; }
-        public TLAbsInputBotInlineMessage SendMessage { get; set; }
+             public string Id {get;set;}
+     public string Type {get;set;}
+     public TLAbsInputPhoto Photo {get;set;}
+     public TLAbsInputBotInlineMessage SendMessage {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Id = StringUtil.Deserialize(br);
-            Type = StringUtil.Deserialize(br);
-            Photo = (TLAbsInputPhoto)ObjectUtils.DeserializeObject(br);
-            SendMessage = (TLAbsInputBotInlineMessage)ObjectUtils.DeserializeObject(br);
+Type = StringUtil.Deserialize(br);
+Photo = (TLAbsInputPhoto)ObjectUtils.DeserializeObject(br);
+SendMessage = (TLAbsInputBotInlineMessage)ObjectUtils.DeserializeObject(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            StringUtil.Serialize(Id, bw);
-            StringUtil.Serialize(Type, bw);
-            ObjectUtils.SerializeObject(Photo, bw);
-            ObjectUtils.SerializeObject(SendMessage, bw);
+			bw.Write(Constructor);
+            StringUtil.Serialize(Id,bw);
+StringUtil.Serialize(Type,bw);
+ObjectUtils.SerializeObject(Photo,bw);
+ObjectUtils.SerializeObject(SendMessage,bw);
 
         }
     }

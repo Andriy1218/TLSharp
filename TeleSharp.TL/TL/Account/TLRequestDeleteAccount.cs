@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Account
 {
-    [TLObject(1099779595)]
+	[TLObject(1099779595)]
     public class TLRequestDeleteAccount : TLMethod
     {
         public override int Constructor
@@ -18,14 +18,14 @@ namespace TeleSharp.TL.Account
             }
         }
 
-        public string Reason { get; set; }
-        public bool Response { get; set; }
+                public string Reason {get;set;}
+        public bool Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
@@ -35,14 +35,14 @@ namespace TeleSharp.TL.Account
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            StringUtil.Serialize(Reason, bw);
+			bw.Write(Constructor);
+            StringUtil.Serialize(Reason,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = BoolUtil.Deserialize(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = BoolUtil.Deserialize(br);
 
-        }
+		}
     }
 }

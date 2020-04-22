@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Help
 {
-    [TLObject(-333262899)]
+	[TLObject(-333262899)]
     public class TLRequestSetBotUpdatesStatus : TLMethod
     {
         public override int Constructor
@@ -18,34 +18,34 @@ namespace TeleSharp.TL.Help
             }
         }
 
-        public int PendingUpdatesCount { get; set; }
-        public string Message { get; set; }
-        public bool Response { get; set; }
+                public int PendingUpdatesCount {get;set;}
+        public string Message {get;set;}
+        public bool Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             PendingUpdatesCount = br.ReadInt32();
-            Message = StringUtil.Deserialize(br);
+Message = StringUtil.Deserialize(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(PendingUpdatesCount);
-            StringUtil.Serialize(Message, bw);
+StringUtil.Serialize(Message,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = BoolUtil.Deserialize(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = BoolUtil.Deserialize(br);
 
-        }
+		}
     }
 }

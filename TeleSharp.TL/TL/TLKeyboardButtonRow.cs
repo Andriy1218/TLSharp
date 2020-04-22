@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(2002815875)]
+	[TLObject(2002815875)]
     public class TLKeyboardButtonRow : TLObject
     {
         public override int Constructor
@@ -18,13 +18,13 @@ namespace TeleSharp.TL
             }
         }
 
-        public TLVector<TLAbsKeyboardButton> Buttons { get; set; }
+             public TLVector<TLAbsKeyboardButton> Buttons {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
@@ -34,8 +34,8 @@ namespace TeleSharp.TL
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Buttons, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Buttons,bw);
 
         }
     }

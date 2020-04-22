@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Messages
 {
-    [TLObject(1587647177)]
+	[TLObject(1587647177)]
     public class TLRequestGetRecentStickers : TLMethod
     {
         public override int Constructor
@@ -18,40 +18,37 @@ namespace TeleSharp.TL.Messages
             }
         }
 
-        public int Flags { get; set; }
-        public bool Attached { get; set; }
-        public int Hash { get; set; }
-        public Messages.TLAbsRecentStickers Response { get; set; }
+                public int Flags {get;set;}
+        public bool Attached {get;set;}
+        public int Hash {get;set;}
+        public Messages.TLAbsRecentStickers Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-            Flags = 0;
-            Flags = Attached ? (Flags | 1) : (Flags & ~1);
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Flags = br.ReadInt32();
-            Attached = (Flags & 1) != 0;
-            Hash = br.ReadInt32();
+Attached = (Flags & 1) != 0;
+Hash = br.ReadInt32();
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ComputeFlags();
+			bw.Write(Constructor);
             bw.Write(Flags);
 
-            bw.Write(Hash);
+bw.Write(Hash);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = (Messages.TLAbsRecentStickers)ObjectUtils.DeserializeObject(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = (Messages.TLAbsRecentStickers)ObjectUtils.DeserializeObject(br);
 
-        }
+		}
     }
 }

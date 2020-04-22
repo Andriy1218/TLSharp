@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-1606526075)]
+	[TLObject(-1606526075)]
     public class TLReplyKeyboardHide : TLAbsReplyMarkup
     {
         public override int Constructor
@@ -18,28 +18,25 @@ namespace TeleSharp.TL
             }
         }
 
-        public int Flags { get; set; }
-        public bool Selective { get; set; }
+             public int Flags {get;set;}
+     public bool Selective {get;set;}
 
 
-        public void ComputeFlags()
-        {
-            Flags = 0;
-            Flags = Selective ? (Flags | 4) : (Flags & ~4);
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Flags = br.ReadInt32();
-            Selective = (Flags & 4) != 0;
+Selective = (Flags & 4) != 0;
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ComputeFlags();
+			bw.Write(Constructor);
             bw.Write(Flags);
 
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-2131957734)]
+	[TLObject(-2131957734)]
     public class TLUpdateUserBlocked : TLAbsUpdate
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public int UserId { get; set; }
-        public bool Blocked { get; set; }
+             public int UserId {get;set;}
+     public bool Blocked {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             UserId = br.ReadInt32();
-            Blocked = BoolUtil.Deserialize(br);
+Blocked = BoolUtil.Deserialize(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(UserId);
-            BoolUtil.Serialize(Blocked, bw);
+BoolUtil.Serialize(Blocked,bw);
 
         }
     }

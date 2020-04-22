@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(70813275)]
+	[TLObject(70813275)]
     public class TLInputStickeredMediaDocument : TLAbsInputStickeredMedia
     {
         public override int Constructor
@@ -18,13 +18,13 @@ namespace TeleSharp.TL
             }
         }
 
-        public TLAbsInputDocument Id { get; set; }
+             public TLAbsInputDocument Id {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
@@ -34,8 +34,8 @@ namespace TeleSharp.TL
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Id, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Id,bw);
 
         }
     }

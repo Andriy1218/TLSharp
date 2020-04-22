@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Contacts
 {
-    [TLObject(-448724803)]
+	[TLObject(-448724803)]
     public class TLRequestUnblock : TLMethod
     {
         public override int Constructor
@@ -18,14 +18,14 @@ namespace TeleSharp.TL.Contacts
             }
         }
 
-        public TLAbsInputUser Id { get; set; }
-        public bool Response { get; set; }
+                public TLAbsInputUser Id {get;set;}
+        public bool Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
@@ -35,14 +35,14 @@ namespace TeleSharp.TL.Contacts
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Id, bw);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Id,bw);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = BoolUtil.Deserialize(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = BoolUtil.Deserialize(br);
 
-        }
+		}
     }
 }

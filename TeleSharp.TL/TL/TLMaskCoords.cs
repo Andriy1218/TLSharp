@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-1361650766)]
+	[TLObject(-1361650766)]
     public class TLMaskCoords : TLObject
     {
         public override int Constructor
@@ -18,33 +18,33 @@ namespace TeleSharp.TL
             }
         }
 
-        public int N { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Zoom { get; set; }
+             public int N {get;set;}
+     public double X {get;set;}
+     public double Y {get;set;}
+     public double Zoom {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             N = br.ReadInt32();
-            X = br.ReadDouble();
-            Y = br.ReadDouble();
-            Zoom = br.ReadDouble();
+X = br.ReadDouble();
+Y = br.ReadDouble();
+Zoom = br.ReadDouble();
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(N);
-            bw.Write(X);
-            bw.Write(Y);
-            bw.Write(Zoom);
+bw.Write(X);
+bw.Write(Y);
+bw.Write(Zoom);
 
         }
     }

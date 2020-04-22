@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-368917890)]
+	[TLObject(-368917890)]
     public class TLPaymentCharge : TLObject
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public string Id { get; set; }
-        public string ProviderChargeId { get; set; }
+             public string Id {get;set;}
+     public string ProviderChargeId {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Id = StringUtil.Deserialize(br);
-            ProviderChargeId = StringUtil.Deserialize(br);
+ProviderChargeId = StringUtil.Deserialize(br);
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            StringUtil.Serialize(Id, bw);
-            StringUtil.Serialize(ProviderChargeId, bw);
+			bw.Write(Constructor);
+            StringUtil.Serialize(Id,bw);
+StringUtil.Serialize(ProviderChargeId,bw);
 
         }
     }

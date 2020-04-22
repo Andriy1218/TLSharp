@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL.Messages
 {
-    [TLObject(1436924774)]
+	[TLObject(1436924774)]
     public class TLRequestReceivedQueue : TLMethod
     {
         public override int Constructor
@@ -18,14 +18,14 @@ namespace TeleSharp.TL.Messages
             }
         }
 
-        public int MaxQts { get; set; }
-        public TLVector<long> Response { get; set; }
+                public int MaxQts {get;set;}
+        public TLVector<long> Response{ get; set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
@@ -35,14 +35,14 @@ namespace TeleSharp.TL.Messages
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
+			bw.Write(Constructor);
             bw.Write(MaxQts);
 
         }
-        public override void DeserializeResponse(BinaryReader br)
-        {
-            Response = (TLVector<long>)ObjectUtils.DeserializeVector<long>(br);
+		public override void DeserializeResponse(BinaryReader br)
+		{
+			Response = (TLVector<long>)ObjectUtils.DeserializeVector<long>(br);
 
-        }
+		}
     }
 }

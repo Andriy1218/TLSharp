@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-1162877472)]
+	[TLObject(-1162877472)]
     public class TLPageBlockAuthorDate : TLAbsPageBlock
     {
         public override int Constructor
@@ -18,27 +18,27 @@ namespace TeleSharp.TL
             }
         }
 
-        public TLAbsRichText Author { get; set; }
-        public int PublishedDate { get; set; }
+             public TLAbsRichText Author {get;set;}
+     public int PublishedDate {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
             Author = (TLAbsRichText)ObjectUtils.DeserializeObject(br);
-            PublishedDate = br.ReadInt32();
+PublishedDate = br.ReadInt32();
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            ObjectUtils.SerializeObject(Author, bw);
-            bw.Write(PublishedDate);
+			bw.Write(Constructor);
+            ObjectUtils.SerializeObject(Author,bw);
+bw.Write(PublishedDate);
 
         }
     }

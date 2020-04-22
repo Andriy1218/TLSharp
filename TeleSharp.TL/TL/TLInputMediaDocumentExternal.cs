@@ -7,38 +7,46 @@ using System.Threading.Tasks;
 using TeleSharp.TL;
 namespace TeleSharp.TL
 {
-    [TLObject(-437690244)]
+	[TLObject(-78455655)]
     public class TLInputMediaDocumentExternal : TLAbsInputMedia
     {
         public override int Constructor
         {
             get
             {
-                return -437690244;
+                return -78455655;
             }
         }
 
-        public string Url { get; set; }
-        public string Caption { get; set; }
+             public int Flags {get;set;}
+     public string Url {get;set;}
+     public int? TtlSeconds {get;set;}
 
 
-        public void ComputeFlags()
-        {
-
-        }
+		public void ComputeFlags()
+		{
+			
+		}
 
         public override void DeserializeBody(BinaryReader br)
         {
-            Url = StringUtil.Deserialize(br);
-            Caption = StringUtil.Deserialize(br);
+            Flags = br.ReadInt32();
+Url = StringUtil.Deserialize(br);
+if ((Flags & 1) != 0)
+TtlSeconds = br.ReadInt32();
+else
+TtlSeconds = null;
+
 
         }
 
         public override void SerializeBody(BinaryWriter bw)
         {
-            bw.Write(Constructor);
-            StringUtil.Serialize(Url, bw);
-            StringUtil.Serialize(Caption, bw);
+			bw.Write(Constructor);
+            bw.Write(Flags);
+StringUtil.Serialize(Url,bw);
+if ((Flags & 1) != 0)
+bw.Write(TtlSeconds.Value);
 
         }
     }
