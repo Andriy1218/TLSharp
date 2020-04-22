@@ -23,9 +23,9 @@ namespace TeleSharp.TL
         public string DeviceModel {get;set;}
         public string SystemVersion {get;set;}
         public string AppVersion {get;set;}
-        public string SystemLangCode {get;set;}
-        public string LangPack {get;set;}
-        public string LangCode {get;set;}
+        public string SystemLangCode { get; set; } = "en";
+        public string LangPack { get; set; } = String.Empty;
+        public string LangCode { get; set; } = "en";
         public TLInputClientProxy Proxy {get;set;}
         public TLObject Query {get;set;}
         public TLObject Response{ get; set;}

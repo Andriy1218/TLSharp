@@ -193,7 +193,13 @@ namespace TLSharp.Core
             if (String.IsNullOrWhiteSpace(phoneNumber))
                 throw new ArgumentNullException(nameof(phoneNumber));
 
-            var request = new TLRequestSendCode() { PhoneNumber = phoneNumber, ApiId = apiId, ApiHash = apiHash };
+            var request = new TLRequestSendCode()
+            {
+                PhoneNumber = phoneNumber,
+                ApiId = apiId,
+                ApiHash = apiHash,
+                Settings = new TLCodeSettings()
+            };
 
             await RequestWithDcMigration(request, token).ConfigureAwait(false);
 
